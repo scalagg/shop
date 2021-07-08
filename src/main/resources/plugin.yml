@@ -1,0 +1,8 @@
+name: Shop
+version: ${project.version}
+main: com.solexgames.shop.Shop
+
+author: SolexGames
+website: https://solexgames.com
+
+depend: [ commonlibs-bukkit, Scandium ]
