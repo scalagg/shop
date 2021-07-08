@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class KillEffectShopCategory extends ConfigurableShopCategory {
 
     public KillEffectShopCategory() {
-        super("Kill Effects", Material.REDSTONE, new ArrayList<>(Arrays.asList(
+        super("Kill Effects", "REDSTONE", new ArrayList<>(Arrays.asList(
                 ChatColor.GRAY + "Purchase special kill effects",
                 ChatColor.GRAY + "to show off to your opponents!"
         )));

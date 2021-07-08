@@ -14,6 +14,6 @@ public interface PurchasableDataType {
 
     String getName();
 
-    Boolean applyToPlayer(Player player, List<String> data);
+    void applyToPlayer(Player player, List<String> data);
 
 }

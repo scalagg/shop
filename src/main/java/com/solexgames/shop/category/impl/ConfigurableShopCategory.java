@@ -15,7 +15,7 @@ import java.util.List;
 public class ConfigurableShopCategory extends ShopCategory {
 
     private final String name;
-    private final Material material;
+    private final String material;
     private final List<String> description;
 
     @Override
@@ -25,7 +25,7 @@ public class ConfigurableShopCategory extends ShopCategory {
 
     @Override
     public Material getMaterial() {
-        return this.material;
+        return Material.getMaterial(this.material);
     }
 
     @Override

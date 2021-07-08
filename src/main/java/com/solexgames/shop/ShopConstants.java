@@ -9,6 +9,6 @@ import org.bukkit.ChatColor;
 
 public final class ShopConstants {
 
-    public static final String BC_PREFIX = ChatColor.GOLD + ChatColor.BOLD.toString() + "Monitor " + ChatColor.GRAY + ChatColor.BOLD.toString() + "»" + " " + ChatColor.YELLOW;
+    public static final String CHAT_PREFIX = ChatColor.GOLD + ChatColor.BOLD.toString() + "Shop " + ChatColor.GRAY + ChatColor.BOLD.toString() + "»" + " " + ChatColor.YELLOW;
 
 }
