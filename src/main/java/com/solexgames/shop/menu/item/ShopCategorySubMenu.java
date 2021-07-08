@@ -27,7 +27,7 @@ public class ShopCategorySubMenu extends Menu {
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         final Map<Integer, Button> buttonMap = new HashMap<>();
-        
+
         return buttonMap;
     }
 }
