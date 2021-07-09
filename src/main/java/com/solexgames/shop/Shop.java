@@ -62,10 +62,13 @@ public final class Shop extends JavaPlugin {
         this.dataTypeHandler.loadFromConfig();
 
         // temp
+        this.categoryHandler.getCategories().clear();
         this.categoryHandler.getCategories().addAll(Arrays.asList(
                 new RankShopCategory(),
                 new PrefixShopCategory()
         ));
+
+        this.itemHandler.getItems().clear();
         this.itemHandler.getItems().addAll(Arrays.asList(
                 new RankShopItem(Rank.getByName("Basic"), 850),
                 new RankShopItem(Rank.getByName("Silver"), 1250),

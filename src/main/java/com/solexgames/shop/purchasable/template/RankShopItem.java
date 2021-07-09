@@ -19,6 +19,6 @@ public class RankShopItem extends ShopPurchasableItem {
                 ChatColor.GRAY + "Purchase the " + rank.getName() + " rank!",
                 "",
                 ChatColor.WHITE + " - " + ChatColor.GRAY + "14d duration"
-        ), Arrays.asList(rank.getName(), "14d"), "EMERALD", 1000);
+        ), Arrays.asList(rank.getName(), "14d"), "EMERALD", price);
     }
 }

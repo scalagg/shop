@@ -17,7 +17,7 @@ public class PrefixShopCategory extends ShopCategory {
 
     @Override
     public String getName() {
-        return "Ranks";
+        return "Prefixes";
     }
 
     @Override
