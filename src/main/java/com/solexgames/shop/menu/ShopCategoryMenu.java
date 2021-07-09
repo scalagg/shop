@@ -23,7 +23,7 @@ public class ShopCategoryMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "Shop » Categories";
+        return "Shop » Main";
     }
 
     @Override

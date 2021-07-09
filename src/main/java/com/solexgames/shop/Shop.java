@@ -1,5 +1,6 @@
 package com.solexgames.shop;
 
+import com.solexgames.core.player.prefixes.Prefix;
 import com.solexgames.core.player.ranks.Rank;
 import com.solexgames.lib.processor.config.ConfigFactory;
 import com.solexgames.lib.processor.config.internal.adapt.AdapterHandler;
@@ -15,6 +16,7 @@ import com.solexgames.shop.handler.ItemHandler;
 import com.solexgames.shop.handler.ShopHandler;
 import com.solexgames.shop.menu.ShopCategoryMenu;
 import com.solexgames.shop.purchasable.ShopPurchasableItem;
+import com.solexgames.shop.purchasable.template.PrefixShopItem;
 import com.solexgames.shop.purchasable.template.RankShopItem;
 import com.solexgames.shop.settings.ShopSettings;
 import me.lucko.helper.Commands;
@@ -70,10 +72,20 @@ public final class Shop extends JavaPlugin {
 
         this.itemHandler.getItems().clear();
         this.itemHandler.getItems().addAll(Arrays.asList(
-                new RankShopItem(Rank.getByName("Basic"), 850),
-                new RankShopItem(Rank.getByName("Silver"), 1250),
-                new RankShopItem(Rank.getByName("Gold"), 1550),
-                new RankShopItem(Rank.getByName("Platinum"), 3000)
+                new RankShopItem(Rank.getByName("Basic"), 2000),
+                new RankShopItem(Rank.getByName("Silver"), 5000),
+                new RankShopItem(Rank.getByName("Gold"), 10000),
+                new RankShopItem(Rank.getByName("Platinum"), 18000)
+        ));
+
+        this.itemHandler.getItems().addAll(Arrays.asList(
+                new PrefixShopItem(Prefix.getByName("MLG"), 150),
+                new PrefixShopItem(Prefix.getByName("YinYang"), 150),
+                new PrefixShopItem(Prefix.getByName("Dropped"), 200),
+                new PrefixShopItem(Prefix.getByName("Lightning"), 200),
+                new PrefixShopItem(Prefix.getByName("Love"), 350),
+                new PrefixShopItem(Prefix.getByName("egirl"), 500),
+                new PrefixShopItem(Prefix.getByName("eboy"), 500)
         ));
 
         if (this.shopSettings.isShopEnabled()) {
