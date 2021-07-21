@@ -28,7 +28,6 @@ public class PrefixDataType implements PurchasableDataType {
     public void applyToPlayer(Player player, List<String> data) {
         final Prefix prefix = Prefix.getByName(data.get(0));
         final PotPlayer potPlayer = CorePlugin.getInstance().getPlayerManager().getPlayer(player);
-        final String duration = data.get(1);
 
         if (prefix == null) {
             throw new InvalidDataException("The prefix you tried to purchase does not exist anymore.");

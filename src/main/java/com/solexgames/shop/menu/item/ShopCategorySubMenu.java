@@ -5,6 +5,7 @@ import com.solexgames.core.util.external.Button;
 import com.solexgames.core.util.external.Menu;
 import com.solexgames.shop.Shop;
 import com.solexgames.shop.category.ShopCategory;
+import com.solexgames.shop.menu.ShopCategoryMenu;
 import com.solexgames.shop.purchasable.ShopPurchasableItem;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
