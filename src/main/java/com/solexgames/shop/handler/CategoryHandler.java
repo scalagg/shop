@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author GrowlyX
@@ -23,5 +25,17 @@ public class CategoryHandler {
         final ShopSettings shopSettings = Shop.getInstance().getShopSettings();
 
         this.categories.addAll(shopSettings.getShopCategories());
+    }
+
+    public Optional<ShopCategory> getById(String id) {
+        return this.categories.stream()
+                .filter(shopCategory -> shopCategory.getName().equalsIgnoreCase(id))
+                .findFirst();
+    }
+
+    public List<String> getCategoryNames() {
+        return this.categories.stream()
+                .map(ShopCategory::getName)
+                .collect(Collectors.toList());
     }
 }

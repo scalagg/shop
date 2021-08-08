@@ -31,7 +31,7 @@ public class ShopCategoryMenu extends Menu {
         final Map<Integer, Button> buttonMap = new HashMap<>();
         final AtomicInteger atomicInteger = new AtomicInteger(10);
 
-        Shop.getInstance().getCategoryHandler().getCategories().forEach(shopCategory -> {
+        Shop.getInstance().getCategoryHandler().getCategories().stream().filter(shopCategory -> shopCategory != null && shopCategory.getDescription() != null).forEach(shopCategory -> {
             final List<String> finalDescription = new ArrayList<>(shopCategory.getDescription());
 
             finalDescription.add(" ");
@@ -50,5 +50,10 @@ public class ShopCategoryMenu extends Menu {
     @Override
     public int getSize() {
         return 27;
+    }
+
+    @Override
+    public boolean isFillBorders() {
+        return true;
     }
 }

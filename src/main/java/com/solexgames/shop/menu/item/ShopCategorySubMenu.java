@@ -9,6 +9,7 @@ import com.solexgames.shop.menu.ShopCategoryMenu;
 import com.solexgames.shop.purchasable.ShopPurchasableItem;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class ShopCategorySubMenu extends Menu {
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         final Map<Integer, Button> buttonMap = new HashMap<>();
-        final AtomicInteger atomicInteger = new AtomicInteger();
+        final AtomicInteger atomicInteger = new AtomicInteger(10);
         final List<ShopPurchasableItem> itemList = Shop.getInstance().getItemHandler()
                 .fetchItemsByCategory(this.category);
 
@@ -54,6 +55,30 @@ public class ShopCategorySubMenu extends Menu {
             );
         });
 
+        buttonMap.put(16, new ItemBuilder(Material.BED)
+                .setDisplayName(ChatColor.RED + "Return to Main")
+                .addLore(
+                        "&7Return back to the",
+                        "&7main shop menu.",
+                        " ",
+                        "&e[Click to open main]"
+                )
+                .toButton((player1, clickType) -> {
+                    new ShopCategoryMenu().openMenu(player1);
+                })
+        );
+
         return buttonMap;
+    }
+
+
+    @Override
+    public int getSize() {
+        return 27;
+    }
+
+    @Override
+    public boolean isFillBorders() {
+        return true;
     }
 }
