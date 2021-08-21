@@ -3,7 +3,7 @@ package com.solexgames.shop.menu;
 import com.solexgames.core.util.builder.ItemBuilder;
 import com.solexgames.core.util.external.Button;
 import com.solexgames.core.util.external.Menu;
-import com.solexgames.shop.Shop;
+import com.solexgames.shop.ShopSpigotPlugin;
 import com.solexgames.shop.menu.item.ShopCategorySubMenu;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -23,7 +23,9 @@ public class ShopCategoryMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return "Shop » Main";
+        final int currentAmount = ShopSpigotPlugin.getInstance().getCurrencyHandler().getAmount(player);
+
+        return "Shop » Main (" + ShopSpigotPlugin.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
     }
 
     @Override
@@ -31,7 +33,7 @@ public class ShopCategoryMenu extends Menu {
         final Map<Integer, Button> buttonMap = new HashMap<>();
         final AtomicInteger atomicInteger = new AtomicInteger(10);
 
-        Shop.getInstance().getCategoryHandler().getCategories().stream().filter(shopCategory -> shopCategory != null && shopCategory.getDescription() != null).forEach(shopCategory -> {
+        ShopSpigotPlugin.getInstance().getCategoryHandler().getCategories().stream().filter(shopCategory -> shopCategory != null && shopCategory.getDescription() != null).forEach(shopCategory -> {
             final List<String> finalDescription = new ArrayList<>(shopCategory.getDescription());
 
             finalDescription.add(" ");

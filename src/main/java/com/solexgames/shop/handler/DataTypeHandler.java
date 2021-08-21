@@ -1,7 +1,7 @@
 package com.solexgames.shop.handler;
 
 import com.solexgames.core.util.BukkitUtil;
-import com.solexgames.shop.Shop;
+import com.solexgames.shop.ShopSpigotPlugin;
 import com.solexgames.shop.purchasable.data.PurchasableDataType;
 import com.solexgames.shop.settings.ShopSettings;
 import lombok.Getter;
@@ -22,10 +22,10 @@ public class DataTypeHandler {
     private final List<PurchasableDataType> dataTypes = new ArrayList<>();
 
     public void loadFromConfig() {
-        final ShopSettings shopSettings = Shop.getInstance().getShopSettings();
+        final ShopSettings shopSettings = ShopSpigotPlugin.getInstance().getShopSettings();
 
         shopSettings.getDataTypes().forEach(dataTypePackage -> {
-            final Collection<Class<?>> classCollection = BukkitUtil.getClassesInPackage(Shop.getInstance(), dataTypePackage);
+            final Collection<Class<?>> classCollection = BukkitUtil.getClassesInPackage(ShopSpigotPlugin.getInstance(), dataTypePackage);
 
             classCollection.forEach(this::attemptToRegisterClass);
         });

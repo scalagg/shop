@@ -1,6 +1,6 @@
 package com.solexgames.shop.handler;
 
-import com.solexgames.shop.Shop;
+import com.solexgames.shop.ShopSpigotPlugin;
 import com.solexgames.shop.category.ShopCategory;
 import com.solexgames.shop.purchasable.ShopPurchasableItem;
 import com.solexgames.shop.settings.ShopSettings;
@@ -21,7 +21,7 @@ public class ItemHandler {
     private final List<ShopPurchasableItem> items = new ArrayList<>();
 
     public void loadFromConfig() {
-        final ShopSettings shopSettings = Shop.getInstance().getShopSettings();
+        final ShopSettings shopSettings = ShopSpigotPlugin.getInstance().getShopSettings();
 
         this.items.addAll(shopSettings.getShopItems());
     }

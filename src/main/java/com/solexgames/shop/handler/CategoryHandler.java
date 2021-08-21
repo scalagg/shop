@@ -1,10 +1,9 @@
 package com.solexgames.shop.handler;
 
-import com.solexgames.shop.Shop;
+import com.solexgames.shop.ShopSpigotPlugin;
 import com.solexgames.shop.category.ShopCategory;
 import com.solexgames.shop.settings.ShopSettings;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class CategoryHandler {
     private final List<ShopCategory> categories = new ArrayList<>();
 
     public void loadFromConfig() {
-        final ShopSettings shopSettings = Shop.getInstance().getShopSettings();
+        final ShopSettings shopSettings = ShopSpigotPlugin.getInstance().getShopSettings();
 
         this.categories.addAll(shopSettings.getShopCategories());
     }

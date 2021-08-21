@@ -1,6 +1,6 @@
 name: Shop
 version: ${git.commit.id.abbrev}
-main: com.solexgames.shop.Shop
+main: com.solexgames.shop.ShopSpigotPlugin
 
 author: SolexGames
 website: https://solexgames.com
