@@ -1,8 +1,8 @@
 name: Shop
-version: ${git.commit.id.abbrev}
-main: com.solexgames.shop.ShopSpigotPlugin
+version: 1.0.0
+main: gg.scala.shop.Shop
 
-author: SolexGames
-website: https://solexgames.com
+author: Scala
+website: https://scala.gg
 
-depend: [commonlibs-bukkit, Scandium]
+depend: [Cubed, Lemon, Cookie, Grape, helper]
