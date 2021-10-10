@@ -140,6 +140,13 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/Peach.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>gg.scala</groupId>
+            <artifactId>grape</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/Grape.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>me.lucko</groupId>
