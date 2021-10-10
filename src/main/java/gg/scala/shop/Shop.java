@@ -1,5 +1,7 @@
 package gg.scala.shop;
 
+import gg.scala.lemon.Lemon;
+import gg.scala.lemon.handler.RankHandler;
 import gg.scala.shop.adapter.ConfigurableShopCategoryAdapter;
 import gg.scala.shop.adapter.ConfigurableShopItemAdapter;
 import gg.scala.shop.category.ShopCategory;
@@ -14,18 +16,14 @@ import gg.scala.shop.handler.DataTypeHandler;
 import gg.scala.shop.handler.ItemHandler;
 import gg.scala.shop.handler.ShopHandler;
 import gg.scala.shop.purchasable.ShopPurchasableItem;
-import gg.scala.shop.purchasable.template.ChatTagShopItem;
 import gg.scala.shop.purchasable.template.RankShopItem;
 import gg.scala.shop.settings.ShopSettings;
-import gg.scala.lemon.Lemon;
-import gg.scala.lemon.handler.RankHandler;
-import gg.scala.peach.handler.ChatTagHandler;
 import lombok.Getter;
 import lombok.Setter;
+import me.lucko.helper.plugin.ExtendedJavaPlugin;
 import net.evilblock.cubed.acf.ConditionFailedException;
 import net.evilblock.cubed.command.manager.CubedCommandManager;
 import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
 import xyz.mkotb.configapi.ConfigFactory;
 import xyz.mkotb.configapi.internal.adapt.AdapterHandler;
 
@@ -37,7 +35,7 @@ import java.util.Arrays;
  */
 
 @Getter
-public final class Shop extends JavaPlugin {
+public final class Shop extends ExtendedJavaPlugin {
 
     @Getter
     private static Shop instance;
@@ -55,7 +53,7 @@ public final class Shop extends JavaPlugin {
     private final ConfigFactory factory = ConfigFactory.newFactory(this);
 
     @Override
-    public void onEnable() {
+    public void enable() {
         instance = this;
 
         AdapterHandler.registerAdapter(ShopPurchasableItem.class, new ConfigurableShopItemAdapter());
@@ -89,15 +87,15 @@ public final class Shop extends JavaPlugin {
                         new RankShopItem(RankHandler.INSTANCE.findRank("Platinum"), 18000)
                 ));
 
-                this.itemHandler.getItems().addAll(Arrays.asList(
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("MLG"), 150),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("YinYang"), 150),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Dropped"), 200),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Lightning"), 200),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Love"), 350),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("egirl"), 500),
-                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("eboy"), 500)
-                ));
+//                this.itemHandler.getItems().addAll(Arrays.asList(
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("MLG"), 150),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("YinYang"), 150),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Dropped"), 200),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Lightning"), 200),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Love"), 350),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("egirl"), 500),
+//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("eboy"), 500)
+//                ));
             }
 
             this.currencyHandler = new GrapeCurrencyHandler();
@@ -125,10 +123,5 @@ public final class Shop extends JavaPlugin {
 
             acfCommandProcessor.registerCommand(new ShopCommand());
         }
-    }
-
-    @Override
-    public void onDisable() {
-        this.factory.save("settings", this.shopSettings);
     }
 }
