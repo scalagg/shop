@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import net.evilblock.cubed.menu.Button;
 import net.evilblock.cubed.menu.Menu;
 import net.evilblock.cubed.util.bukkit.ItemBuilder;
+import net.evilblock.cubed.util.bukkit.Tasks;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -83,5 +84,15 @@ public class ShopCategorySubMenu extends Menu {
     @Override
     public int size(@NotNull Map<Integer, ? extends Button> buttons) {
         return 27;
+    }
+
+    @Override
+    public void onClose(@NotNull Player player, boolean manualClose) {
+        if (manualClose) {
+            Tasks.sync(() -> {
+                new ShopCategoryMenu().openMenu(player);
+                return null;
+            });
+        }
     }
 }
