@@ -56,7 +56,7 @@ public class ShopCategorySubMenu extends Menu {
             finalDescription.add(" ");
             finalDescription.add(ChatColor.GRAY + "Price: " + ChatColor.WHITE + shopPurchasableItem.getPrice() + " " + Shop.getInstance().getCurrencyHandler().getId());
             finalDescription.add(" ");
-            finalDescription.add(shopPurchasableItem.canPurchase(player) ? ChatColor.YELLOW + "[Click to purchase item]" : ChatColor.RED + "[You don't have enough XP]");
+            finalDescription.add(shopPurchasableItem.canPurchase(player) ? ChatColor.YELLOW + "Click to purchase!" : ChatColor.RED + "You don't have enough money.");
 
             buttonMap.put(atomicInteger.getAndIncrement(), new ItemBuilder(shopPurchasableItem.getMaterial())
                     .name(ChatColor.GREEN + shopPurchasableItem.getName())

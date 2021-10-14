@@ -49,7 +49,7 @@ public class ShopCategoryMenu extends Menu {
             final List<String> finalDescription = new ArrayList<>(shopCategory.getDescription());
 
             finalDescription.add(" ");
-            finalDescription.add(ChatColor.YELLOW + "[Click to view products]");
+            finalDescription.add(ChatColor.YELLOW + "Click to view.");
 
             buttonMap.put(atomicInteger.getAndIncrement(), new ItemBuilder(shopCategory.getMaterial())
                     .name(ChatColor.GREEN + shopCategory.getName())
