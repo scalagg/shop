@@ -50,16 +50,16 @@ public final class Shop extends ExtendedJavaPlugin {
     @Setter
     private CurrencyHandler currencyHandler;
 
-    private final ConfigFactory factory = ConfigFactory.newFactory(this);
-
     @Override
     public void enable() {
         instance = this;
 
+        final ConfigFactory factory = ConfigFactory.newFactory(this);
+
         AdapterHandler.registerAdapter(ShopPurchasableItem.class, new ConfigurableShopItemAdapter());
         AdapterHandler.registerAdapter(ConfigurableShopCategory.class, new ConfigurableShopCategoryAdapter());
 
-        this.shopSettings = this.factory.fromFile("settings", ShopSettings.class);
+        this.shopSettings = factory.fromFile("settings", ShopSettings.class);
 
         this.categoryHandler = new CategoryHandler();
         this.itemHandler = new ItemHandler();
