@@ -88,6 +88,10 @@
 
     <repositories>
         <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
@@ -146,6 +150,12 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/Grape.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.mkotb</groupId>
+            <artifactId>ConfigAPI</artifactId>
+            <version>e1c8df3f13</version>
         </dependency>
 
         <dependency>

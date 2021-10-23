@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ShopCategoryMenu extends Menu {
 
     {
-        setPlaceholder(true);
+        setPlaceholdBorders(true);
     }
 
     @Override
@@ -43,13 +43,13 @@ public class ShopCategoryMenu extends Menu {
     @Override
     public Map<Integer, Button> getButtons(@NotNull Player player) {
         final Map<Integer, Button> buttonMap = new HashMap<>();
-        final AtomicInteger atomicInteger = new AtomicInteger(10);
+        final AtomicInteger atomicInteger = new AtomicInteger(11);
 
         Shop.getInstance().getCategoryHandler().getCategories().stream().filter(shopCategory -> shopCategory != null && shopCategory.getDescription() != null).forEach(shopCategory -> {
             final List<String> finalDescription = new ArrayList<>(shopCategory.getDescription());
 
             finalDescription.add(" ");
-            finalDescription.add(ChatColor.YELLOW + "Click to view.");
+            finalDescription.add(ChatColor.YELLOW + "Click to view products.");
 
             buttonMap.put(atomicInteger.getAndIncrement(), new ItemBuilder(shopCategory.getMaterial())
                     .name(ChatColor.GREEN + shopCategory.getName())

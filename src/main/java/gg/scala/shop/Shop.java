@@ -1,5 +1,6 @@
 package gg.scala.shop;
 
+import gg.scala.commons.ExtendedScalaPlugin;
 import gg.scala.lemon.Lemon;
 import gg.scala.lemon.handler.RankHandler;
 import gg.scala.shop.adapter.ConfigurableShopCategoryAdapter;
@@ -35,7 +36,7 @@ import java.util.Arrays;
  */
 
 @Getter
-public final class Shop extends ExtendedJavaPlugin {
+public final class Shop extends ExtendedScalaPlugin {
 
     @Getter
     private static Shop instance;

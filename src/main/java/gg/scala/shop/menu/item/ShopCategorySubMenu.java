@@ -31,7 +31,7 @@ public class ShopCategorySubMenu extends Menu {
     private final ShopCategory category;
 
     {
-        setPlaceholder(true);
+        setPlaceholdBorders(true);
     }
 
     @NotNull
