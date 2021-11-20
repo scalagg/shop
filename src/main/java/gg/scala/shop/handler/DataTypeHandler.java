@@ -2,6 +2,8 @@ package gg.scala.shop.handler;
 
 import gg.scala.shop.Shop;
 import gg.scala.shop.purchasable.data.PurchasableDataType;
+import gg.scala.shop.purchasable.data.impl.ChatTagDataType;
+import gg.scala.shop.purchasable.data.impl.RankDataType;
 import gg.scala.shop.settings.ShopSettings;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -29,6 +31,9 @@ public class DataTypeHandler {
 
             classCollection.forEach(this::attemptToRegisterClass);
         });
+
+        dataTypes.add(new ChatTagDataType());
+        dataTypes.add(new RankDataType());
     }
 
     public PurchasableDataType findById(String id) {
