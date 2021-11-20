@@ -7,6 +7,7 @@ import gg.scala.shop.purchasable.ShopPurchasableItem;
 import lombok.RequiredArgsConstructor;
 import net.evilblock.cubed.menu.Button;
 import net.evilblock.cubed.menu.Menu;
+import net.evilblock.cubed.menu.pagination.PaginatedMenu;
 import net.evilblock.cubed.util.bukkit.ItemBuilder;
 import net.evilblock.cubed.util.bukkit.Tasks;
 import org.bukkit.ChatColor;
@@ -14,10 +15,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -26,7 +24,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 @RequiredArgsConstructor
-public class ShopCategorySubMenu extends Menu {
+public class ShopCategorySubMenu extends PaginatedMenu {
+
+    private static final List<Integer> SLOTS = Arrays.asList(
+            10, 11, 12, 13, 14, 15, 16,
+            19, 20, 21, 22, 23, 24, 25
+    );
 
     private final ShopCategory category;
 
@@ -34,17 +37,30 @@ public class ShopCategorySubMenu extends Menu {
         setPlaceholdBorders(true);
     }
 
-    @NotNull
     @Override
-    public String getTitle(@NotNull Player player) {
-        final int currentAmount = Shop.getInstance().getCurrencyHandler().getAmount(player);
+    public int size(@NotNull Map<Integer, ? extends Button> buttons) {
+        return 36;
+    }
 
-        return "Shop » " + this.category.getName() + " (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
+    @Override
+    public void onClose(@NotNull Player player, boolean manualClose) {
+        if (manualClose) {
+            Tasks.sync(() -> {
+                new ShopCategoryMenu().openMenu(player);
+                return null;
+            });
+        }
     }
 
     @NotNull
     @Override
-    public Map<Integer, Button> getButtons(@NotNull Player player) {
+    public List<Integer> getAllPagesButtonSlots() {
+        return SLOTS;
+    }
+
+    @NotNull
+    @Override
+    public Map<Integer, Button> getAllPagesButtons(@NotNull Player player) {
         final Map<Integer, Button> buttonMap = new HashMap<>();
         final AtomicInteger atomicInteger = new AtomicInteger(10);
         final List<ShopPurchasableItem> itemList = Shop.getInstance().getItemHandler()
@@ -65,34 +81,14 @@ public class ShopCategorySubMenu extends Menu {
             );
         });
 
-        buttonMap.put(16, new ItemBuilder(Material.BED)
-                .name(ChatColor.RED + "Return to Main")
-                .addToLore(
-                        "&7Return back to the",
-                        "&7main shop menu.",
-                        " ",
-                        "&eClick to open main."
-                )
-                .toButton((player1, clickType) -> {
-                    new ShopCategoryMenu().openMenu(player1);
-                })
-        );
-
         return buttonMap;
     }
 
+    @NotNull
     @Override
-    public int size(@NotNull Map<Integer, ? extends Button> buttons) {
-        return 27;
-    }
+    public String getPrePaginatedTitle(@NotNull Player player) {
+        final int currentAmount = Shop.getInstance().getCurrencyHandler().getAmount(player);
 
-    @Override
-    public void onClose(@NotNull Player player, boolean manualClose) {
-        if (manualClose) {
-            Tasks.sync(() -> {
-                new ShopCategoryMenu().openMenu(player);
-                return null;
-            });
-        }
+        return "Shop » " + this.category.getName() + " (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
     }
 }

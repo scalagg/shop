@@ -3,6 +3,7 @@ package gg.scala.shop;
 import gg.scala.commons.ExtendedScalaPlugin;
 import gg.scala.lemon.Lemon;
 import gg.scala.lemon.handler.RankHandler;
+import gg.scala.peach.handler.ChatTagHandler;
 import gg.scala.shop.adapter.ConfigurableShopCategoryAdapter;
 import gg.scala.shop.adapter.ConfigurableShopItemAdapter;
 import gg.scala.shop.category.ShopCategory;
@@ -17,6 +18,7 @@ import gg.scala.shop.handler.DataTypeHandler;
 import gg.scala.shop.handler.ItemHandler;
 import gg.scala.shop.handler.ShopHandler;
 import gg.scala.shop.purchasable.ShopPurchasableItem;
+import gg.scala.shop.purchasable.template.ChatTagShopItem;
 import gg.scala.shop.purchasable.template.RankShopItem;
 import gg.scala.shop.settings.ShopSettings;
 import lombok.Getter;
@@ -88,15 +90,9 @@ public final class Shop extends ExtendedScalaPlugin {
                         new RankShopItem(RankHandler.INSTANCE.findRank("Platinum"), 18000)
                 ));
 
-//                this.itemHandler.getItems().addAll(Arrays.asList(
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("MLG"), 150),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("YinYang"), 150),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Dropped"), 200),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Lightning"), 200),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("Love"), 350),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("egirl"), 500),
-//                        new ChatTagShopItem(ChatTagHandler.INSTANCE.findChatTag("eboy"), 500)
-//                ));
+                ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
+                    this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
+                });
             }
 
             this.currencyHandler = new GrapeCurrencyHandler();
