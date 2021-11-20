@@ -31,7 +31,7 @@ public class ShopSettings {
 
     @Comment("Which packages full of awesome data types should we register?")
     private List<String> dataTypes = Collections.singletonList(
-            "com.solexgames.shop.purchasable.data.impl"
+            "gg.scala.shop.purchasable.data.impl"
     );
 
 }

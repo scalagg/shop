@@ -30,6 +30,7 @@ import xyz.mkotb.configapi.ConfigFactory;
 import xyz.mkotb.configapi.internal.adapt.AdapterHandler;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * @author GrowlyX
@@ -107,7 +108,7 @@ public final class Shop extends ExtendedScalaPlugin {
 
             acfCommandProcessor.getCommandContexts()
                     .registerContext(ShopCategory.class, c -> {
-                        final String firstArg = c.popFirstArg();
+                        final String firstArg = String.join(" ", c.getArgs());
                         final ShopCategory category = this.categoryHandler.getById(firstArg).orElse(null);
 
                         if (category == null) {
