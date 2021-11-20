@@ -20,7 +20,7 @@ public class ChatTagDataType implements PurchasableDataType {
 
     @Override
     public String getName() {
-        return "Prefix";
+        return "Chat Tags";
     }
 
     @Override

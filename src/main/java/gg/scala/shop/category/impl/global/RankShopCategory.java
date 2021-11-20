@@ -29,7 +29,7 @@ public class RankShopCategory extends ShopCategory {
     public List<String> getDescription() {
         return new ArrayList<>(Arrays.asList(
                 ChatColor.GRAY + "Purchase ranks for up to 14 days",
-                ChatColor.GRAY + "with your experience!"
+                ChatColor.GRAY + "with your coins!"
         ));
     }
 }

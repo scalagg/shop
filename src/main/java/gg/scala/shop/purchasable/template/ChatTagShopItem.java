@@ -14,8 +14,8 @@ import java.util.Collections;
 public class ChatTagShopItem extends ShopPurchasableItem {
 
     public ChatTagShopItem(ChatTag prefix, int price) {
-        super(ChatColor.GREEN + prefix.getDisplayName() + " " + ChatColor.GRAY + "(" + prefix.getValue() + ChatColor.GRAY + ")", "Prefixes", "Prefix", Collections.singletonList(
-                ChatColor.GRAY + "Purchase the " + prefix.getDisplayName() + " prefix!"
-        ), Collections.singletonList(prefix.getValue()), "ITEM_FRAME", price);
+        super(ChatColor.GREEN + prefix.getDisplayName() + " " + ChatColor.GRAY + "(" + prefix.getValue() + ChatColor.GRAY + ")", "Chat Tags", "Chat Tags", Collections.singletonList(
+                ChatColor.GRAY + "Purchase the " + prefix.getDisplayName() + " chat tag!"
+        ), Collections.singletonList(prefix.getValue()), "NAME_TAG", price);
     }
 }

@@ -8,7 +8,7 @@ import gg.scala.shop.adapter.ConfigurableShopCategoryAdapter;
 import gg.scala.shop.adapter.ConfigurableShopItemAdapter;
 import gg.scala.shop.category.ShopCategory;
 import gg.scala.shop.category.impl.ConfigurableShopCategory;
-import gg.scala.shop.category.impl.global.PrefixShopCategory;
+import gg.scala.shop.category.impl.global.ChatTagShopCategory;
 import gg.scala.shop.category.impl.global.RankShopCategory;
 import gg.scala.shop.command.ShopCommand;
 import gg.scala.shop.currency.CurrencyHandler;
@@ -23,7 +23,6 @@ import gg.scala.shop.purchasable.template.RankShopItem;
 import gg.scala.shop.settings.ShopSettings;
 import lombok.Getter;
 import lombok.Setter;
-import me.lucko.helper.plugin.ExtendedJavaPlugin;
 import net.evilblock.cubed.acf.ConditionFailedException;
 import net.evilblock.cubed.command.manager.CubedCommandManager;
 import org.bukkit.ChatColor;
@@ -78,7 +77,7 @@ public final class Shop extends ExtendedScalaPlugin {
             this.categoryHandler.getCategories().clear();
             this.categoryHandler.getCategories().addAll(Arrays.asList(
                     new RankShopCategory(),
-                    new PrefixShopCategory()
+                    new ChatTagShopCategory()
             ));
 
             if (Lemon.getInstance().getLemonWebData().getServerName().equals("PvPBar")) {

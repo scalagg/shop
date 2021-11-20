@@ -13,23 +13,23 @@ import java.util.List;
  * @since 7/8/2021
  */
 
-public class PrefixShopCategory extends ShopCategory {
+public class ChatTagShopCategory extends ShopCategory {
 
     @Override
     public String getName() {
-        return "Prefixes";
+        return "Chat Tags";
     }
 
     @Override
     public Material getMaterial() {
-        return Material.ITEM_FRAME;
+        return Material.NAME_TAG;
     }
 
     @Override
     public List<String> getDescription() {
         return new ArrayList<>(Arrays.asList(
-                ChatColor.GRAY + "Purchase permanent prefixes",
-                ChatColor.GRAY + "with your experience!"
+                ChatColor.GRAY + "Purchase permanent chat tags",
+                ChatColor.GRAY + "with your coins!"
         ));
     }
 }

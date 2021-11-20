@@ -19,11 +19,12 @@ public class ShopHandler {
         final int currentAmount = Shop.getInstance().getCurrencyHandler().getAmount(player);
 
         if (currentAmount < item.getPrice()) {
-            player.sendMessage(ChatColor.RED + "You cannot afford this item! You need " + (item.getPrice() - currentAmount) + " more experience to purchase this item.");
+            player.sendMessage(ChatColor.RED + "You cannot afford this item! You need " + (item.getPrice() - currentAmount) + " more coins to purchase this item.");
             return;
         }
 
-        final PurchasableDataType dataType = Shop.getInstance().getDataTypeHandler().findById(item.getDataType());
+        final PurchasableDataType dataType = Shop.getInstance()
+                .getDataTypeHandler().findById(item.getDataType());
 
         if (dataType == null) {
             player.sendMessage(ChatColor.RED + "Something went terribly wrong while trying to purchase this product. (-1)");
