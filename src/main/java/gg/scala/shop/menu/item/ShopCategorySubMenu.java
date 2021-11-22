@@ -58,6 +58,11 @@ public class ShopCategorySubMenu extends PaginatedMenu {
         return SLOTS;
     }
 
+    @Override
+    public int getMaxItemsPerPage(@NotNull Player player) {
+        return 18;
+    }
+
     @NotNull
     @Override
     public Map<Integer, Button> getAllPagesButtons(@NotNull Player player) {
