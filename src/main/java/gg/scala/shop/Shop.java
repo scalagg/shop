@@ -81,13 +81,13 @@ public final class Shop extends ExtendedScalaPlugin {
                     new ChatTagShopCategory()
             ));
 
-            if (Lemon.getInstance().getLemonWebData().getServerName().equals("PvPBar")) {
+            if (Lemon.getInstance().getLemonWebData().getServerName().equals("Verio")) {
                 this.itemHandler.getItems().clear();
                 this.itemHandler.getItems().addAll(Arrays.asList(
-                        new RankShopItem(RankHandler.INSTANCE.findRank("Basic"), 2000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("Silver"), 5000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("Gold"), 10000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("Platinum"), 18000)
+                        new RankShopItem(RankHandler.INSTANCE.findRank("VIP"), 2000),
+                        new RankShopItem(RankHandler.INSTANCE.findRank("PRO"), 5000),
+                        new RankShopItem(RankHandler.INSTANCE.findRank("MVP"), 10000),
+                        new RankShopItem(RankHandler.INSTANCE.findRank("MVP+"), 18000)
                 ));
 
                 ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {

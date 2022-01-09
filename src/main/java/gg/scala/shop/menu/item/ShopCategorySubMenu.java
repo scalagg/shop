@@ -60,7 +60,7 @@ public class ShopCategorySubMenu extends PaginatedMenu {
 
     @Override
     public int getMaxItemsPerPage(@NotNull Player player) {
-        return 18;
+        return 14;
     }
 
     @NotNull
