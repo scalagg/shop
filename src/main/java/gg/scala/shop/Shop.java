@@ -83,12 +83,14 @@ public final class Shop extends ExtendedScalaPlugin {
 
             if (Lemon.getInstance().getLemonWebData().getServerName().equals("Verio")) {
                 this.itemHandler.getItems().clear();
-                this.itemHandler.getItems().addAll(Arrays.asList(
-                        new RankShopItem(RankHandler.INSTANCE.findRank("VIP"), 2000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("PRO"), 5000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("MVP"), 10000),
-                        new RankShopItem(RankHandler.INSTANCE.findRank("MVP+"), 18000)
-                ));
+
+                RankHandler.INSTANCE.getRanks().values()
+                        .stream().filter(rank ->
+                            rank.getPermissions().contains("lemon.donator")
+                        ).forEach(rank -> {
+                            this.itemHandler.getItems()
+                                    .add(new RankShopItem(rank, rank.getWeight() * 2000));
+                        });
 
                 ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
                     this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
