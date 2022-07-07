@@ -14,6 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>artifactory</id>
+            <name>scala-releases</name>
+            <url>https://artifactory.scala.gg/artifactory/gradle-release</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <!-- Git Commit Plugin -->
@@ -120,7 +128,7 @@
             <artifactId>cubed</artifactId>
             <version>1.2</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/cubed-bukkit-1.2.jar</systemPath>
+            <systemPath>${basedir}/lib/cubed-bukkit.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -142,7 +150,7 @@
             <artifactId>peach</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/Peach.jar</systemPath>
+            <systemPath>${basedir}/lib/peach.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>gg.scala</groupId>

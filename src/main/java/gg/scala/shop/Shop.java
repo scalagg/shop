@@ -1,6 +1,8 @@
 package gg.scala.shop;
 
 import gg.scala.commons.ExtendedScalaPlugin;
+import gg.scala.commons.annotations.commands.ManualRegister;
+import gg.scala.commons.annotations.container.ContainerEnable;
 import gg.scala.lemon.Lemon;
 import gg.scala.lemon.handler.RankHandler;
 import gg.scala.peach.handler.ChatTagHandler;
@@ -23,14 +25,10 @@ import gg.scala.shop.purchasable.template.RankShopItem;
 import gg.scala.shop.settings.ShopSettings;
 import lombok.Getter;
 import lombok.Setter;
-import net.evilblock.cubed.acf.ConditionFailedException;
-import net.evilblock.cubed.command.manager.CubedCommandManager;
-import org.bukkit.ChatColor;
 import xyz.mkotb.configapi.ConfigFactory;
 import xyz.mkotb.configapi.internal.adapt.AdapterHandler;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  * @author GrowlyX
@@ -53,8 +51,8 @@ public final class Shop extends ExtendedScalaPlugin {
     @Setter
     private CurrencyHandler currencyHandler;
 
-    @Override
-    public void enable() {
+    @ContainerEnable
+    public void containerEnable() {
         instance = this;
 
         final ConfigFactory factory = ConfigFactory.newFactory(this);
@@ -81,46 +79,21 @@ public final class Shop extends ExtendedScalaPlugin {
                     new ChatTagShopCategory()
             ));
 
-            if (Lemon.getInstance().getLemonWebData().getServerName().equals("Verio")) {
-                this.itemHandler.getItems().clear();
+            this.itemHandler.getItems().clear();
 
-                RankHandler.INSTANCE.getRanks().values()
-                        .stream().filter(rank ->
-                            rank.getPermissions().contains("lemon.donator")
-                        ).forEach(rank -> {
-                            this.itemHandler.getItems()
-                                    .add(new RankShopItem(rank, rank.getWeight() * 2000));
-                        });
-
-                ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
-                    this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
+            RankHandler.INSTANCE.getRanks().values()
+                .stream().filter(rank ->
+                    rank.getPermissions().contains("lemon.donator")
+                ).forEach(rank -> {
+                    this.itemHandler.getItems()
+                        .add(new RankShopItem(rank, rank.getWeight() * 2000));
                 });
-            }
+
+            ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
+                this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
+            });
 
             this.currencyHandler = new GrapeCurrencyHandler();
-
-            final CubedCommandManager acfCommandProcessor = new CubedCommandManager(
-                    this,
-                    ChatColor.valueOf(Lemon.instance.lemonWebData.getPrimary()),
-                    ChatColor.valueOf(Lemon.instance.lemonWebData.getSecondary())
-            );
-
-            acfCommandProcessor.getCommandCompletions()
-                    .registerAsyncCompletion("categories", k -> this.categoryHandler.getCategoryNames());
-
-            acfCommandProcessor.getCommandContexts()
-                    .registerContext(ShopCategory.class, c -> {
-                        final String firstArg = String.join(" ", c.getArgs());
-                        final ShopCategory category = this.categoryHandler.getById(firstArg).orElse(null);
-
-                        if (category == null) {
-                            throw new ConditionFailedException(ChatColor.YELLOW + firstArg + ChatColor.RED + " is not a valid shop category.");
-                        }
-
-                        return category;
-                    });
-
-            acfCommandProcessor.registerCommand(new ShopCommand());
         }
     }
 }

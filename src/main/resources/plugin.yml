@@ -1,10 +1,8 @@
 name: Shop
-version: 1.0.0
+version: origin/unknown
 main: gg.scala.shop.Shop
 
 author: Scala
 website: https://scala.gg
 
-load: POSTWORLD
-
-depend: [Cubed, Lemon, Cookie, Grape, helper]
+depend: [Lemon, Cookie, Grape, scala-commons, store-spigot]

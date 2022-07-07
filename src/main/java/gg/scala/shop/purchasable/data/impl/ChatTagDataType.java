@@ -1,5 +1,6 @@
 package gg.scala.shop.purchasable.data.impl;
 
+import gg.scala.peach.service.PeachPlayerService;
 import gg.scala.shop.purchasable.data.PurchasableDataType;
 import gg.scala.shop.purchasable.data.exception.InvalidDataException;
 import gg.scala.peach.PeachSpigotPlugin;
@@ -26,12 +27,13 @@ public class ChatTagDataType implements PurchasableDataType {
     @Override
     public void applyToPlayer(Player player, List<String> data) {
         final ChatTag chatTag = ChatTagHandler.INSTANCE.findChatTag(data.get(0));
-        final ChatTagPlayer chatTagPlayer = PeachSpigotPlugin.getInstance()
-                .getPlayers().get(player.getUniqueId());
+        final ChatTagPlayer chatTagPlayer = PeachPlayerService.INSTANCE.find(player);
 
         if (chatTag == null) {
             throw new InvalidDataException("The prefix you tried to purchase does not exist anymore.");
         }
+
+        assert chatTagPlayer != null;
 
         if (chatTagPlayer.getOwnedTags().contains(chatTag.getUniqueId())) {
             throw new InvalidDataException("You already own the " + ChatColor.YELLOW + chatTag.getDisplayName() + ChatColor.RED + " chat tag!");
