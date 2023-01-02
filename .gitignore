@@ -3,7 +3,7 @@
 *.iml
 *.iws
 
-gradle.properties
+lombok.config
 
 # Mac
 .DS_Store
