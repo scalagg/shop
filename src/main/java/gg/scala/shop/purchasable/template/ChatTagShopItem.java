@@ -1,7 +1,7 @@
 package gg.scala.shop.purchasable.template;
 
+import gg.scala.chattags.plugin.model.ChatTag;
 import gg.scala.shop.purchasable.ShopPurchasableItem;
-import gg.scala.peach.model.ChatTag;
 import org.bukkit.ChatColor;
 
 import java.util.Collections;

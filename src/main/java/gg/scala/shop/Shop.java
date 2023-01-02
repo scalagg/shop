@@ -1,18 +1,14 @@
 package gg.scala.shop;
 
+import gg.scala.chattags.plugin.handler.ChatTagsService;
 import gg.scala.commons.ExtendedScalaPlugin;
-import gg.scala.commons.annotations.commands.ManualRegister;
 import gg.scala.commons.annotations.container.ContainerEnable;
-import gg.scala.lemon.Lemon;
 import gg.scala.lemon.handler.RankHandler;
-import gg.scala.peach.handler.ChatTagHandler;
 import gg.scala.shop.adapter.ConfigurableShopCategoryAdapter;
 import gg.scala.shop.adapter.ConfigurableShopItemAdapter;
-import gg.scala.shop.category.ShopCategory;
 import gg.scala.shop.category.impl.ConfigurableShopCategory;
 import gg.scala.shop.category.impl.global.ChatTagShopCategory;
 import gg.scala.shop.category.impl.global.RankShopCategory;
-import gg.scala.shop.command.ShopCommand;
 import gg.scala.shop.currency.CurrencyHandler;
 import gg.scala.shop.currency.impl.GrapeCurrencyHandler;
 import gg.scala.shop.handler.CategoryHandler;
@@ -89,7 +85,7 @@ public final class Shop extends ExtendedScalaPlugin {
                         .add(new RankShopItem(rank, rank.getWeight() * 2000));
                 });
 
-            ChatTagHandler.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
+            ChatTagsService.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
                 this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
             });
 

@@ -1,12 +1,11 @@
 package gg.scala.shop.purchasable.data.impl;
 
-import gg.scala.peach.service.PeachPlayerService;
+import gg.scala.chattags.plugin.handler.ChatTagsService;
+import gg.scala.chattags.plugin.model.ChatTag;
+import gg.scala.chattags.plugin.model.ChatTagPlayer;
+import gg.scala.chattags.plugin.service.ChatTagsPlayerService;
 import gg.scala.shop.purchasable.data.PurchasableDataType;
 import gg.scala.shop.purchasable.data.exception.InvalidDataException;
-import gg.scala.peach.PeachSpigotPlugin;
-import gg.scala.peach.handler.ChatTagHandler;
-import gg.scala.peach.model.ChatTag;
-import gg.scala.peach.model.ChatTagPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -26,8 +25,8 @@ public class ChatTagDataType implements PurchasableDataType {
 
     @Override
     public void applyToPlayer(Player player, List<String> data) {
-        final ChatTag chatTag = ChatTagHandler.INSTANCE.findChatTag(data.get(0));
-        final ChatTagPlayer chatTagPlayer = PeachPlayerService.INSTANCE.find(player);
+        final ChatTag chatTag = ChatTagsService.INSTANCE.findChatTag(data.get(0));
+        final ChatTagPlayer chatTagPlayer = ChatTagsPlayerService.INSTANCE.find(player);
 
         if (chatTag == null) {
             throw new InvalidDataException("The prefix you tried to purchase does not exist anymore.");
