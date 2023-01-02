@@ -94,6 +94,6 @@ public class ShopCategorySubMenu extends PaginatedMenu {
     public String getPrePaginatedTitle(@NotNull Player player) {
         final int currentAmount = Shop.getInstance().getCurrencyHandler().getAmount(player);
 
-        return "Shop » " + this.category.getName() + " (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
+        return "Shop " + " (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
     }
 }

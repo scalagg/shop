@@ -36,7 +36,7 @@ public class ShopCategoryMenu extends Menu {
     public String getTitle(@NotNull Player player) {
         final int currentAmount = Shop.getInstance().getCurrencyHandler().getAmount(player);
 
-        return "Shop » Main (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
+        return "Shop (" + Shop.getInstance().getCurrencyHandler().getId() + ": " + currentAmount + ")";
     }
 
     @NotNull

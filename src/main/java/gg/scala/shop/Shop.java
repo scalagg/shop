@@ -77,14 +77,6 @@ public final class Shop extends ExtendedScalaPlugin {
 
             this.itemHandler.getItems().clear();
 
-            RankHandler.INSTANCE.getRanks().values()
-                .stream().filter(rank ->
-                    rank.getPermissions().contains("lemon.donator")
-                ).forEach(rank -> {
-                    this.itemHandler.getItems()
-                        .add(new RankShopItem(rank, rank.getWeight() * 2000));
-                });
-
             ChatTagsService.INSTANCE.getChatTags().forEach((uuid, chatTag) -> {
                 this.itemHandler.getItems().add(new ChatTagShopItem(chatTag, 350));
             });
